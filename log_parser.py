@@ -29,13 +29,20 @@
 #}
 # ======================================================================================================================
 
+import sys
 import json
 from collections import Counter
 
-fp = open("qgames.log", "r")
+# Opening the log file
+try:
+	quakelogfile = open("qgames.log", "r")
 
-# Read the log file into a list of lines
-full_log = fp.readlines()
+	# Read the log file into a list of lines
+	full_log = quakelogfile.readlines()
+
+	quakelogfile.close()
+except IOError:
+	sys.exit("File: qgames.log not found")
 
 
 # Remove leading white spaces from each line and save them into a list
